@@ -1,0 +1,21 @@
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+}
+#container div{
+   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.style{
+    margin-left: 7px;
+   font-size: 18px;
+}
+
+img{
+    width: 100%;
+}

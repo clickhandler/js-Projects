@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div id="navbar">
+      <h3>Sign Up</h3>
+      <a href="voucher.html">Purchase Voucher</a>
+    </div>
+   <div class="input">
+      <input type="text" id="name" placeholder="Enter Name">
+      <input type="email" id="email" placeholder="Enter Email">
+      <input type="text" id="address" placeholder="Enter Address">
+      <input type="number" id="amount" placeholder="Enter Amount">
+      <div>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <!-- - name input box :- "name"
+  - email input box :- "email"
+  - Address input box :- "address"
+  - Amount input box :- "amount" 
+  - Submit button :- "submit"
+  - The user will be stored with key:- "user"
+  - The input fields should become empty after submitting -->
+  </body>
+</html>
+<script src="scripts/main.js"></script>
+<!-- <script>
+  document.getElementById("submit").addEventListener("click",getData)
+  function getData(){
+    
+    var name=document.getElementById("name").value;
+    var email=document.getElementById("email").value;
+    var address=document.getElementById("address").value;
+    var amount=document.getElementById("amount").value;
+     
+    let userData={
+      name:name,
+      email:email,
+      address:address,
+      wallet:amount
+    }
+    console.log(userData)
+
+  localStorage.setItem("user",JSON.stringify(userData))
+
+    var name=document.getElementById("name").value=null
+    var email=document.getElementById("email").value=null
+    var address=document.getElementById("address").value=null
+    var amount=document.getElementById("amount").value=null
+  }
+
+   
+    
+  
+</script> -->

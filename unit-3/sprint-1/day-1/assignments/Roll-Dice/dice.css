@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(154, 228, 154);
+}
+h2{
+   display: inline-block;
+    width: 20%;
+    height: 30px;
+    background-color: white;
+    border: 2px solid red;
+    align-items: center;
+}
+
+#dicebox{
+   display: flex;
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+}
+
+#heading{
+    text-align: center;
+}
+#dicebox>div{
+   
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+img{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+}
+#roll{
+    margin: auto;
+    width: 8%;
+    display: flex;
+    margin-top: 10px;
+}

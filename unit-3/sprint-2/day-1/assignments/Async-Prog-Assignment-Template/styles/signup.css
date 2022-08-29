@@ -1,0 +1,32 @@
+#signup-form-div{
+    width: 50%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+    background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+    
+}
+h1{
+   display: inline-block;
+}
+.signupstyle input{
+ border: 1px solid gray;
+ padding: 10px 20px 10px 20px;
+ margin: 5px;
+ border-radius: 5px;
+}
+#btn input{
+    background-color: teal;
+    border: none;
+    color: white;
+    padding: 10px 50px 10px 50px;
+    border-radius: 7px;
+
+   margin: 15px;
+
+}
+#btn input:hover{
+    cursor: pointer;
+}

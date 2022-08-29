@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #hotels_list{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: auto;
+      margin: auto;
+      gap: 10px;
+    }
+    #hotels_list img{
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div id="navbar">
+      <h2>Hotel App</h2>
+      <input type="text" id="query" onkeypress="Gethotel(event)" />
+      <a href="login.html" id="login">Login</a>
+      <a href="/signup.html" id="signup">SignUp</a>
+      <!-- the search-box id:- "query"
+ - the log-in and sign-up link will have ids:- "login" and "signup" -->
+    </div>
+    <div id="sorting" >
+      <select name="" id="sorting"onchange="handlesort()">
+      <option value="">Sort By Price</option>
+      <option value="sort-lh">Low to High</option>
+      <option value="sort-hl">High to Low</option>
+    </select>
+      <!-- sort by price low to high Id:- "sort_lth"
+ - sort by price high to low Id:- "sort_htl"
+ - Filter Ac hotels Id:- "filter_ac"
+ - Filter Non Ac hotels Id:- "filter_nonac" -->
+    </div>
+    <div>
+      <div id="hotels_list"></div>
+      <!-- - Append all fetched hotels inside div with id:- "hotels_list"
+ - Every hotel card will have id:-  "hotel"
+ - The book now button will have class as "book" -->
+    </div>
+  </body>
+</html>
+<script>
+
+let HotelData=[]
+  async function Gethotel(event) {
+    let query = document.getElementById("query").value;
+
+    let url = `https://masai-mock-api.herokuapp.com/hotels/search?city=${query}`;
+
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log(data.hotels);
+    AppendData(data.hotels);
+  }
+
+  Gethotel();
+
+  function AppendData(data) {
+    let container = document.getElementById("hotels_list");
+    container.innerHTML=null;
+
+    data.forEach(function (elem) {
+      let div = document.createElement("div");
+      div.setAttribute("id", "hotel");
+
+      let image = document.createElement("img");
+      image.src = elem.Images.one;
+      let title = document.createElement("h3");
+      title.innerText = elem.Title;
+
+      let price = document.createElement("h5");
+      price.innerText = `Price Per Room ${elem.Price}`
+
+      let rate = document.createElement("h5");
+      rate.innerText = `Ratings ${elem.Rating}`
+
+      let ac = document.createElement("h4");
+      ac.innerText =`Ac ${elem.Ac}`
+      
+      let btn=document.createElement("button")
+      btn.setAttribute("class","book")
+      btn.innerText="Book Now"
+
+      btn.addEventListener("click",function(){
+        Bookhotel(elem)
+      })
+      div.append(image, title, price, rate,ac,btn);
+
+      container.append(div);
+     });
+  }
+
+
+
+
+  function Bookhotel(elem){
+    HotelData.push(elem)
+    console.log(HotelData)
+    localStorage.setItem("Booked",JSON.stringify(HotelData))
+  
+}
+  
+
+
+// function handlesort(){
+//   var selector=document.querySelector("#sorting").value
+//   if(selector=="sort-lh"){
+//     HotelData.sort(function(a,b){
+//      if( a.Price>b.Price){
+//        return 1
+//      }
+//      if(a.Price<b.Price){
+//        return -1
+//      }
+//      else{
+//        return 0;
+//      }
+//     })
+//     AppendData(HotelData)
+//     console.log(HotelData)
+//   }
+//   if(selector=="sort-lh"){
+//     HotelData.sort(function(a,b){
+//      if( a.Price>b.Price){
+//        return -1
+//      }
+//      if(a.Price<b.Price){
+//        return 1
+//      }
+//      else{
+//        return 0;
+//      }
+//     })
+//     AppendData(HotelData)
+//     console.log(HotelData)
+// }
+</script>

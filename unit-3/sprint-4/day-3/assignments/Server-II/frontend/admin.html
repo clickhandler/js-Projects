@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin-Panel</title>
+  </head>
+  <body>
+      <div>
+    <input type="text" id="name" placeholder="Enter Name" />
+    <input type="number" id="id" placeholder="Enter Id" />
+    <input type="number" id="price" placeholder="Enter Price" />
+    <button onclick="Addproduct()">Add Product</button>
+</div>
+
+<div>
+    <input type="text" id="id2" placeholder="Enter ID">
+    <button onclick="DeleteProduct()" >Delete Product</button>
+</div>
+  </body>
+</html>
+
+<script>
+  async function Addproduct() {
+    let Product = {
+      id: document.getElementById("id").value,
+      name: document.getElementById("name").value,
+      price: document.getElementById("price").value,
+    };
+
+    Product = JSON.stringify(Product);
+
+    let response = await fetch("http://127.0.0.1:3000/api/products", {
+      method: "POST",
+
+      body: Product,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let data = await response.json();
+    console.log(data);
+  }
+
+
+  async function DeleteProduct(){
+
+let id=document.getElementById("id2").value
+
+let response = await fetch(`http://127.0.0.1:3000/api/products/${id}`,{
+    method:"DELETE",
+
+headers: {
+        "Content-Type": "application/json",
+      },
+
+})
+  }
+</script>

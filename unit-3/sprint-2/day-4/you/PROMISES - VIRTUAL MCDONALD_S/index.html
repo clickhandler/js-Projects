@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRTUAL MCDONALD'S</title>
+    <link rel="stylesheet" href="./CSS/index.css" type="text/css">
+</head>
+<body>
+    <section id="order-container">
+        <div id="img-logo">
+            <img src="https://www.freepnglogos.com/uploads/mcdonalds-png-logo/mcdonalds-png-logo-picture-3.png" alt="logoMacD">
+        </div>
+        <h1 id="headline">Order Your Foods</h1>
+        <div id="foodStock">
+            <div>
+                <input type="checkbox" id="food1" class="mcF"  value="McSPICY CHICKEN">
+                <label for="food1">McSPICY CHICKEN</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food2" class="mcF" value="BIGSPICY CHICKEN WRAP">
+                <label for="food2">BIGSPICY CHICKEN WRAP</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food3" class="mcF" value="McSPICY PANEER">
+                <label for="food3">McSPICY PANEER</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food4" class="mcF" value="McALLO TIKKI">
+                <label for="food4">McALLO TIKKI</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food5" class="mcF" value="GREEN CHILLI KABAB NAAN">
+                <label for="food5">GREEN CHILLI KABAB NAAN</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food6" class="mcF" value="CHEESY RICE BOWL WITH CHICKEN STRIPS">
+                <label for="food6">CHEESY RICE BOWL WITH CHICKEN STRIPS</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food7" class="mcF" value="SAUSAGE McMUFFINs">
+                <label for="food7">SAUSAGE McMUFFINs</label>
+            </div>
+            <div>
+                <input type="checkbox" id="food8" class="mcF" value="MEXICAN CHEESY FRIES">
+                <label for="food8">MEXICAN CHEESY FRIES</label>
+            </div>
+            <div id="btnBox">
+                <button id="orderBtn">Order Food</button>
+            </div>
+            <p id="redTag"></p>
+        </div>
+        <div id="Dipslay">
+            <h2 id="status">Your Order Status would be here</h2>
+            <div id="orderId">
+                
+            </div>
+            <div id="imgApp">
+                <img id="images" src="https://i.pinimg.com/736x/f5/64/b7/f564b792764099776e7c7b8baedefb6a.jpg" alt="macD">
+            </div>
+            <p id="price"></p>
+        </div>
+    </section>
+</body>
+</html>
+<script src="./JavaScript/index.js"></script>
+
+<!-- Deployed Link==>   https://startling-travesseiro-2df7d2.netlify.app -->
+
+
+<!-- 
+//Problem Statement
+// VIRTUAL MCDONALD'S
+//Statement :-
+// You have recently taken a McDonald’s franchise. You, being a software developer, 
+// want to design a virtual food ordering system to handle the orders coming in. 
+// Users should be able to place orders through it. Whenever one order is complete, 
+// it should be visible on the screen with the order number.
+
+// Description :-
+// Create a button called 'Order Food'. Create a checkbox of multiple food 
+// items you can choose from.
+// When a user clicks on order food, create a promise that will 
+// resolve after random seconds.
+// Once the promise is resolved, show the image of the food in the 
+// centre and show the order id on the top right corner.
+// Try to make your virtual restaurant as real as possible. -->

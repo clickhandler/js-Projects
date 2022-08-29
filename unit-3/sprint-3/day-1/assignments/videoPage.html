@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube/view</title>
+    <link rel="stylesheet" href="Youtube.css">
+    <script src="https://kit.fontawesome.com/57a88932f2.js" crossorigin="anonymous"></script>
+</head>
+<style>
+#cont img{
+ width: 300px;
+
+
+}
+#cont{
+    margin: auto;
+    width: 50%;
+}
+iframe{
+    width: 100%;
+    height: 300px;
+}
+h3{
+    margin-top: 5px;
+}
+</style>
+<body>
+    <button></button>
+   
+    <div id="navbar">
+       <a href="youtubefetch.html"> <div > <img id="logo" src="https://www.freepnglogos.com/uploads/youtube-logo-png-transparent-background-download-3.png" alt=""></a>
+        </div>
+        <div id="search">
+            <input type="text" id="query" placeholder="Search...">
+            <button onclick="search()" id="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+
+    <div id="Showbox"></div>
+</body>
+</html>
+
+<script>
+
+let VideoArr=JSON.parse(localStorage.getItem("videosData"))||[]
+
+console.log(VideoArr)
+
+let container=document.createElement("div")
+container.setAttribute("id","cont")
+
+
+let tit=document.createElement("h3")
+tit.innerText=VideoArr.title
+
+// let image=document.createElement("img")
+// image.src=VideoArr.thumbnails.default.url
+
+let ifram=document.createElement("iframe")
+ifram.src=`https://www.youtube.com/embed/${VideoArr.videoId}`
+ifram.allow = "fullscreen"
+
+container.append(ifram,tit)
+
+document.getElementById("Showbox").append(container)
+  
+       
+   
+</script>

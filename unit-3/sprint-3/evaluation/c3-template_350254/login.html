@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log-In</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <a href="/index.html" id="home">Home</a>
+      <a href="/signup.html" id="signUp">Sign Up</a>
+    </div>
+    <div id="form">
+      <h1>User Log In</h1>
+      <input type="email" id="email">
+      <input type="password" id="password">
+      <button id="log_in" onclick="LogedUser()">Login</button>
+      <!-- - The input fields will have ids:- "email" and "password"
+  - The log-in button will have id:- "log_in".   -->
+    </div>
+  </body>
+</html>
+<script>
+let signupArr=JSON.parse(localStorage.getItem("users"))||[]
+
+
+let form=document.getElementById("form")
+function LogedUser(){
+  let signupArr=JSON.parse(localStorage.getItem("users"))||[]
+  let email1=document.getElementById("email").value
+  let password1=document.getElementById("password").value
+
+  
+  
+signupArr.forEach(function(elem){
+  
+  
+if(email1==signupArr.email&&password1==signupArr.password){
+  alert("Welcome User")
+}
+else{
+  alert("enter Corect")
+}
+
+  })
+  
+
+}
+</script>

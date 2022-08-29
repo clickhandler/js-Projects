@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<style>
+    img{
+        display: flex;
+       margin: auto;
+       
+    }
+</style>
+<body>
+    <img src="https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif" id="loading" alt="">
+
+</body>
+
+</html>
+<script>
+
+    // let image=https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif
+    // let image=https://c.tenor.com/ePiCFa5wBIYAAAAC/welcome-youre-welcome.gif
+
+    let image = document.getElementById("loading")
+    function checkContent() {
+        return true;
+    }
+    let mypromise = new Promise(function (resolve, reject) {
+        let content = checkContent()
+        setInterval(function () {
+            if (content) {
+                resolve("Content Loded")
+            }
+            else {
+                reject("Fail to load")
+            }
+
+        }, 3000)
+
+    })
+
+    mypromise.then(function (value) {
+        image.src = "https://c.tenor.com/ePiCFa5wBIYAAAAC/welcome-youre-welcome.gif"
+        console.log("value:", value)
+    }).catch(function (err) {
+        image.src = "https://c.tenor.com/e_6G20pCUj0AAAAi/hereisrae-raexsamlo.gif"
+
+        console.log("err:", err)
+    })
+    console.log(mypromise)
+
+</script>

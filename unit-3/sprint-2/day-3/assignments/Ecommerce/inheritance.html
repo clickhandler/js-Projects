@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tata’s R&D department.</h2>
+    <div id="show"></div>
+</body>
+</html>
+<script>
+  function Fourwheel(m,w,l,f,t){
+      this.model=m;
+      this.wheels=w;
+      this.lights=l;
+      this.fuel=f;
+      this.type=t
+  }
+
+  let car=Object.create(Fourwheel);
+  Fourwheel.model="Creta"
+  Fourwheel.wheels="16inches"
+  Fourwheel.lights="Projector"
+  Fourwheel.fuel="Petrol"
+  Fourwheel.type="Suv"
+  console.log(car)
+
+  
+
+let model=document.createElement("h3")
+  model.innerText=`Model- ${car.model}`
+
+  let wheels=document.createElement("h3")
+  wheels.innerText=`wheels- ${car.wheels}`
+
+  let lights=document.createElement("h3")
+  lights.innerText=`light- ${car.lights}`
+
+  let fuel=document.createElement("h3")
+  fuel.innerText=`Fuel-type- ${car.fuel}`
+
+  let type=document.createElement("h3")
+  type.innerText=`Type- ${car.type}`
+
+  show.append(model,wheels,lights,fuel,type)
+
+ 
+  
+
+</script>

@@ -1,0 +1,17 @@
+body{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+
+
+#voucher_list{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 90%;
+    gap: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.voucher img{
+    width: 200px;
+}

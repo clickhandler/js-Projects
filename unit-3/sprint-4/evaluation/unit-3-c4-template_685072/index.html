@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News App</title>
+  </head>
+  <style>
+    #navbar {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      background-color: antiquewhite;
+    }
+    #navbar a {
+      margin: 20px;
+    }
+    #navbar input {
+      width: 80%;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+    #results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      margin: auto;
+      gap: 10px;
+      top: 25%;
+    left: 16%;
+    position: absolute;
+    width: 80%;
+    }
+    #results img {
+      width: 100%;
+    }
+    #sidebar {
+      display: flex;
+      flex-direction: column;
+      width: 14%;
+      position: relative;
+      background-color: antiquewhite;
+    }
+    #sidebar h3 {
+      margin: 10px;
+      border: 1px solid black;
+      padding: 10px 10px;
+      background-color: teal;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <!-- Give Navbar with id "navbar"  -->
+    <div id="navbar"></div>
+    <!-- Navbar will have input with id search_input and a link to home page i.e. index.html -->
+    <!-- Sidebar will have id "sidebar"  -->
+    <h3>countries</h3>
+    <div id="sidebar">
+      <h3 id="in">India</h3>
+      <h3 id="ch">China</h3>
+      <h3 id="us">usa</h3>
+      <h3 id="uk">uk</h3>
+      <h3 id="nz">Newzland</h3>
+    </div>
+    <!-- Give link to top headlines of countries in sidebar with id as their country codes 
+    india :- in
+    china :- ch
+    usa :- us
+    uk : uk
+    Newzeland :- nz -->
+
+    <!-- Append results inside div with id "results"  -->
+    <div id="results"></div>
+    <!-- News divs will have class "news"  -->
+  </body>
+</html>
+
+<script type="module">
+  import navbar from "/components/navbar.js";
+  let container = document.getElementById("navbar");
+  container.innerHTML = navbar();
+</script>
+
+<script>
+  async function Fetchnews() {
+    let response = await fetch(
+      "https://masai-api.herokuapp.com/news/top-headlines?country=in"
+    );
+
+    let data = await response.json();
+    console.log(data);
+    Appnednews(data.articles);
+  }
+  Fetchnews();
+
+  function Appnednews(data) {
+    let container = document.getElementById("results");
+    container.innerHTML = null;
+    data.forEach((elem) => {
+      let div = document.createElement("div");
+      div.setAttribute("class","news")
+
+      let image = document.createElement("img");
+      image.src = elem.urlToImage;
+      let title = document.createElement("h3");
+      title.innerText = elem.title;
+
+      let content1 = document.createElement("p");
+      content1.innerText = elem.content;
+
+      div.append(image, title,content1);
+
+      container.append(div);
+    });
+  }
+
+  function search() {
+    window.location.href = "search.html";
+  }
+
+  let countries = document.getElementById("sidebar").children;
+  //  console.log(countries)
+
+  async function countriesData() {
+    document.getElementById("results").innerHTML = null;
+
+    let country_code = this.id;
+
+    let response = await fetch(
+      `https://masai-api.herokuapp.com/news/top-headlines?country=${country_code}`
+    );
+
+    let data = await response.json();
+    Appnednews(data.articles);
+  }
+
+  for (let elem of countries) {
+    elem.addEventListener("click", countriesData);
+  }
+
+  async function search() {
+    let query = document.getElementById("search_input").value;
+
+    let response = await fetch(
+      `https://masai-api.herokuapp.com/news?q=${query}`
+    );
+
+    let data = await response.json();
+
+    Appnednews(data.articles);
+    window.location.href = "search.html";
+
+    localStorage.setItem("searchData", JSON.stringify(data));
+  }
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #video {
+      position: relative;
+    }
+    input {
+      padding: 5px 50px 5px 50px;
+      border-radius: 5px;
+      text-align: left;
+    }
+    #image1 {
+      position: absolute;
+      bottom: 77%;
+      left: 42%;
+    }
+    #image1 img {
+      margin-top: 50px;
+      width: 200px;
+      height: auto;
+    }
+    #video {
+      scroll-behavior: unset;
+    }
+    #Result {
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      background-color: white;
+      border-radius: 15px;
+    }
+    p {
+      font-weight: bolder;
+      color: orange;
+    }
+    p:hover {
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div id="video">
+      <video
+        src="https://giant.gfycat.com/HotAcrobaticLabradorretriever.mp4"
+        autoplay
+        muted
+        width="100%"
+        loop
+      ></video>
+    </div>
+    <div id="image1">
+      <img
+        src="https://www.freepnglogos.com/uploads/star-wars-logo-0.png"
+        alt=""
+      />
+    </div>
+    <div id="Result">
+      <input
+        type="text"
+        oninput="debouncing(main,1000)"
+        id="query"
+        placeholder="Search Character"
+      />
+      <div id="show"></div>
+    </div>
+  </body>
+</html>
+<script>
+  //  https://swapi.dev/api/people/?search={your_search_term}
+  let id;
+
+  async function getData() {
+    let query = document.getElementById("query").value;
+    let url = `https://swapi.dev/api/people/?search=${query}`;
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    console.log(data);
+    return data.results;
+  }
+
+  function append(data) {
+    let container = document.getElementById("show");
+    container.innerHTML = "";
+
+    data.forEach(function (elem) {
+      let p = document.createElement("p");
+      p.innerText = elem.name;
+
+      container.append(p);
+    });
+  }
+
+  async function main() {
+    let data = await getData();
+    append(data);
+  }
+
+  function debouncing(func, delay) {
+    if (id) {
+      clearTimeout(id);
+    }
+
+    id = setTimeout(function () {
+      func();
+    }, delay);
+  }
+</script>

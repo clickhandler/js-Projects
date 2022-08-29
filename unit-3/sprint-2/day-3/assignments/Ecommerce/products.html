@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product-page</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <div id="container">
+      
+    </div>
+</body>
+</html>
+<script>
+ let productArr=JSON.parse(localStorage.getItem("Products"))||[]
+
+displayData(productArr)
+
+function displayData(Data){
+    let container=document.getElementById("container")
+    let productArr=JSON.parse(localStorage.getItem("Products"))||[]
+
+
+    Data.forEach(function(elem){
+        let Box=document.createElement("div")
+        let image=document.createElement("img")
+        image.src=elem.img
+
+        let nametag=document.createElement("p")
+        nametag.innerText=`Product Name - ${elem.name}`
+        nametag.setAttribute("Class","style")
+
+        let cat=document.createElement("p")
+        cat.innerText=`Product category - ${elem.cat}`
+        cat.setAttribute("Class","style")
+        let price=document.createElement("p")
+        price.innerText=`Price ₹ ${elem.rupees}`
+        price.setAttribute("Class","style")
+        let gender=document.createElement("p")
+        gender.innerText=`Gender - ${elem.gen}`
+        gender.setAttribute("Class","style")
+
+        let btn=document.createElement("button")
+        btn.innerText="Remove"
+        btn.setAttribute("id","Remove")
+
+        btn.addEventListener("click",RemoveItem)
+        Box.append(image,nametag,gender,cat,price,btn)
+
+        container.append(Box)
+       
+
+    })
+
+    function RemoveItem(){
+        event.target.parentNode.remove()
+    }
+        
+    
+   
+}
+ 
+</script>

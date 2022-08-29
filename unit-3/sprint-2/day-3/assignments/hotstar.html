@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #navbar{
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    #navbar div{
+        color: white;
+        align-items: center;
+        justify-content: center;
+        
+
+    }
+    #Logo{
+        margin-top: 10px;
+    }
+    #kids{
+        margin-top: 20px;
+    }
+    input{
+        width: 286px;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid gray;
+        color: white;
+    }
+    #movies{
+        
+      
+      
+        opacity: 0.7;
+       background-color: black;
+       color: white;
+        border: 2px solid black;
+        border-top: none;
+        overflow: scroll;
+    }
+    
+    #movies:hover{
+       
+        cursor: pointer;
+    }
+    button{
+    background-color: #1f80e0;
+        color: white;
+        display: inline-block;
+        padding: 10px;
+    }
+    button{
+        border: none;
+    display: flex;
+    border-radius: 7px;
+    font-size: 19px;
+    width: 10%;
+    
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+    
+</style>
+<body>
+
+<div id="navbar">
+    <div id="bergur"></div>
+    <div id="Logo"> <img src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg" alt=""></div>
+    <div><h4>Tv</h4></div>
+    <div><h4>Movie</h4></div>
+    <div><h4>Sports</h4></div>
+    <div><h4>Disney+</h4></div>
+    <div id="kids" ><img src="https://www.hotstar.com/assets/4aa70ede8904e16b7630300c09219c8e.svg" alt=""></div>
+    <input oninput="debounceFunc(main,1000)" type="text" id="query" placeholder="Search">
+    
+    <button>Subscribe</button>
+    
+    <div style="margin: 20px" >LOGIN</div>
+    
+</div>
+<div id="movies"></div>
+   
+</body>
+
+</html>
+
+<script> 
+
+// logo=https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg
+let id;
+let movies_div=document.getElementById("movies")
+async function searchMovies(q){
+try{
+    let url=`http://www.omdbapi.com/?s=${q}&apikey=af03c81c`;
+    console.log(url)
+    let res=await fetch(url)
+
+    let data=await res.json()
+
+   
+  return data.Search
+}
+catch (error){
+console.log("error",error)
+}
+}
+
+
+
+function append(movies){
+    movies_div.innerHTML=null;
+      if(movies===undefined){
+          return false
+      }
+
+    movies.forEach(function(elem){
+        let title1=document.createElement("p")
+        title1.innerText=elem.Title
+
+        movies_div.append(title1)
+    })
+
+}
+
+
+async function main(){
+  let query=  document.getElementById("query").value;
+  
+
+  let response=searchMovies(query)
+
+  let data=await response
+
+  append(data)
+
+  console.log("Data",data)
+}
+
+function debounceFunc(func,delay){
+    if (id){
+            clearTimeout(id)
+        }
+
+  id=  setTimeout(function(){
+        
+        func()
+    },delay)
+
+}
+
+</script>

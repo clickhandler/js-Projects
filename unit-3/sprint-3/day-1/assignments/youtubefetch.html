@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <script src="https://kit.fontawesome.com/57a88932f2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Youtube.css">
+</head>
+<!-- <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    #result {
+        
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+ }
+
+    #result div {
+        width: 100%;
+        
+    }
+#logo{
+    display: flex;
+    justify-content: flex-start;
+        width: 200px;
+    }
+#navbar{
+        display: flex;
+       align-items: center;
+       margin-bottom: 20px;
+    }
+/* #navbar div{
+    display: flex;
+    
+} */
+#search{
+    width: 50%;
+}
+ #query{
+     position: relative;
+     margin-left: 45%;
+        height: 50px;
+        width: 80%;
+        font-size: 20px;
+        border: 2px solid rgb(179, 176, 176);
+    }
+#btn{
+    position: absolute;
+    width: 5%;
+    height: 50px;
+    left: 78%;
+    top: 30px;
+    border: 2px solid rgb(179, 176, 176);
+   
+}
+#btn:hover{
+    cursor: pointer;
+    pointer-events: fill;
+}
+#divbox img{
+    width: 100%;
+}
+
+
+
+    
+    
+</style> -->
+
+<body>
+
+    <button></button>
+   
+    <div id="navbar">
+       <a href="youtubefetch.html"> <div > <img id="logo" src="https://www.freepnglogos.com/uploads/youtube-logo-png-transparent-background-download-3.png" alt=""></a>
+        </div>
+        <div id="search">
+            <input type="text" id="query" placeholder="Search...">
+            <button onclick="search()" id="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+
+    <div id="result"></div>
+
+
+
+</body>
+
+</html>
+<script>
+    const api_key = "AIzaSyCE2vwJ31l29LSxaP8dZPsp9lXupUofMlg"
+
+    
+
+    let search = async () => {
+        try {
+            let query = document.getElementById("query").value
+            let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&key=${api_key}`
+            let res = await fetch(url)
+
+            let data = await res.json()
+            append(data.items)
+
+            // console.log(data)
+        } catch (err) {
+            console.log(err)
+        }
+
+       
+
+
+    }
+
+
+    let append = (data) => {
+
+        let container = document.getElementById("result")
+container.innerText=""
+        data.forEach(function ({ id: { videoId }, snippet: { title,thumbnails} }) {
+            let div = document.createElement("div")
+            div.setAttribute("id","divbox")
+
+            let image=document.createElement("img")
+            image.src=thumbnails.high.url;  
+
+            // let ifram = document.createElement("iframe")
+            // ifram.src = `https://www.youtube.com/embed/${videoId}`
+            // ifram.allow = "fullscreen"
+
+            let title1 = document.createElement("h4")
+            title1.innerText = title
+
+            div.append(image,title1)
+            
+            console.log(data)
+
+
+            let video={
+                title,
+                videoId,
+                thumbnails,
+            };
+
+
+           div.onclick=()=>{
+               getVideo(video)
+           }
+            
+           container.append(div)
+        })
+
+        
+    
+}
+   
+//  let VideoArr=JSON.parse(localStorage.getItem("videosData"))||[]
+
+
+getVideo=(video)=>{
+
+    //  VideoArr.push(video)
+
+    localStorage.setItem("videosData",JSON.stringify(video))
+
+    window.location.href="videoPage.html"
+}
+
+
+
+// <iframe width="560" height="315" 
+// src="https://www.youtube.com/embed/y3eM0zpoKlE" 
+// title="YouTube video player" 
+// frameborder="0" 
+// allow="accelerometer;
+//  autoplay; clipboard-write; 
+//  encrypted-media; gyroscope; 
+//  picture-in-picture" allowfullscreen></iframe>
+</script>

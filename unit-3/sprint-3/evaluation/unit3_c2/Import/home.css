@@ -1,0 +1,12 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+   
+   
+    border: 2px solid red;
+}
+#option{
+    display: flex;
+    justify-content: space-between;
+    
+}

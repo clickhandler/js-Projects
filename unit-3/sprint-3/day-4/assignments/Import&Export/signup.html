@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/navbar.css">
+    <link rel="stylesheet" href="/style/signup.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div id="signup-form-div">
+    <form id="signup">
+        <p>Signup</p>
+        <input required type="text" placeholder="Name" id="name">
+        <input required type="number" placeholder="Mobile Number" id="num">
+        <input required type="email" placeholder="Email" id="email">
+        <input required type="password" placeholder="Password" id="pwd">
+        <div id="btnDiv">
+            <input type="submit" value="Submit" id="btn">
+        </div>
+        <p id="warn">Existing user?</p>
+        <a id="wLink" href="./login.html">Please Login</a>
+    </form>
+</div>
+    
+</body>
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+    document.getElementById("navbar").innerHTML = navbar()
+  </script>
+  
+  <script src="/script/signup.js"></script>

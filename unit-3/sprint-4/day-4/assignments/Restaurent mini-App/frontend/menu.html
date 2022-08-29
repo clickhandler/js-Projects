@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menupage</title>
+</head>
+<style>
+    #menu{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        width: 95%;
+    
+        margin: auto;
+    }
+    #menu img{
+        width: 100%;
+        margin-top: 40px;
+    }
+</style>
+<body>
+    <div>
+    <button onclick="Sortlth()">Sort Price Low To High</button>
+    <button onclick="Filter()">Filter Rating</button>
+</div>
+    <div id="menu"></div>
+    
+</body>
+</html>
+<script src="script/menu.js"></script>

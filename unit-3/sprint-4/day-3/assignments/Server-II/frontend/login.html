@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login Here</h1>
+    <input type="text" id="user-name" placeholder="Enter User Name">
+    <input type="text" id="login-password" placeholder="Enter Password">
+    <button onclick="LoginUser()">Login</button>
+</body>
+</html>
+<script>
+  async  function LoginUser(){
+
+        let Login_data={
+            username:document.getElementById("user-name").value,
+            password:document.getElementById("login-password").value,
+        }
+
+     Login_data=JSON.stringify(Login_data)
+
+     let login_Api ='https://masai-api-mocker.herokuapp.com/auth/login';
+
+     let response = await fetch(login_Api,{
+
+method:"POST",
+
+body:Login_data,
+
+
+headers:{
+    'Content-Type':'application/json'
+},
+ })
+
+ let data= await response.json()
+ console.log(data)
+
+    }
+</script>

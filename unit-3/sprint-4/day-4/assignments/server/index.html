@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #box{
+        border: 2px solid teal;
+        background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+    }
+    #Add{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        text-align: center;
+        margin: auto;
+
+    }
+    button{
+        width: 30%;
+        display: inline-block;
+        margin: auto;
+        margin-bottom: 70px;
+    }
+    input{
+        width: 100%;
+        margin: 5px;
+        font-size: 18px;
+       
+    }
+    
+    #Delstyle{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        text-align: center;
+        margin: auto;
+
+    }
+    #updateStyle{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        text-align: center;
+        margin: auto;
+    }
+</style>
+<body>
+    <div id="box">
+    <div id="Add">
+<h2>Add Product</h2>
+<input type="text" id="no" placeholder="Enter Id No">
+<input type="text" id="name" placeholder="Enter Name ">
+<input type="text" id="price" placeholder="Enter Price">
+<button onclick="addPro()" > Add Product</button>
+    </div>
+    <div id="Delstyle">
+        <h2>Delete Product</h2>
+        <input type="text" id="dataDel" placeholder="Enter Id">
+        <button onclick="deleteData()">Delete</button>
+    </div>
+    <div id="updateStyle">
+        <h2>Update Details</h2>
+        <input type="text" id="update">
+        <button onclick="updateData()">Update</button>
+    </div>
+</div>
+    
+</body>
+</html>
+<script>
+    // Post-------------------------------------------
+async function addPro(){
+    const data={
+        id:document.getElementById("no").value,
+        name:document.getElementById("name").value,
+        price:document.getElementById("price").value
+    }
+    console.log(data)
+
+
+let response = await fetch("http://localhost:5500/api/products",{
+    method:"POST",
+    body: JSON.stringify(data),
+
+    headers:{'Content-Type':'application/json'},
+
+    
+})
+let dat=await response.json()
+
+}
+// Delete----------------------------------------
+async function deleteData(){
+let delete1=document.getElementById("dataDel").value;
+
+let response = await fetch(`http://localhost:3000/api/products/${delete1}`,{
+
+method:"DELETE",
+headers:{'Content-Type':'application/json'}
+
+
+});
+let dat=await response.json()
+
+}
+
+
+// Patch-----------------------------------------
+
+async function updateData (){
+    let update1=document.getElementById("update").value;
+    let name1=document.getElementById("name").value;
+    let price1=document.getElementById("price").value;
+    let response = await fetch(`http://localhost:3000/api/products/${update1}`,{
+    method:"PATCH",
+    body: JSON.stringify({
+      
+       price:price1,
+       name:name1
+    }),
+
+    headers:{'Content-Type':'application/json'},
+
+    
+})
+let dat=await response.json()
+}
+
+
+</script>

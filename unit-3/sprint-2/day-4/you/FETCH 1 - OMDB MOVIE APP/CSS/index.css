@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* navbar css */
+#navbar{
+    border: 1px solid black;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+#navbar>ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 20px;
+    list-style: none;
+}
+#navbar>ul>li{
+    margin: 20px;
+    font-size: 18px;
+}
+#logoBtn{
+    padding: 10px 15px 10px 15px;
+    background-color: red;
+    color: white;
+    font-size: 28px;
+    border-radius: 100%;
+    font-family: 'Knewave', cursive;
+}
+li>a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/*movie Input Box CSS*/
+
+#inputBox{
+    width: 50%;
+    height: auto;
+    margin: 50px auto;
+}
+#inputBox>div>div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 18px;
+    margin-bottom: 50px;
+}
+#inputBox>div>h1{
+    text-align: center;
+    padding: 28px 0;
+}
+
+#search{
+    width: 60%;
+    height: 50px;
+    border: 2px solid teal;
+    border-radius: 12px;
+    padding-left: 15px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#movieBtn{
+    padding: 0 20px;
+    margin-left: 18px;
+    background-color: teal;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* display DOM css */
+
+#movieD{
+    height:400px;
+    margin: auto;
+}
+.movie-box{
+    display: flex;
+    justify-content: space-between;
+}
+.movie-img{
+    width: 40%;
+    height: inherit;
+    object-fit: fill;
+}
+.info-box{
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#notFound{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-weight: 600;
+}
+.info-box .rec{
+    width: max-content;
+    background-color: red;
+    color: white;
+    border-radius: 25px;
+    padding: 8px 5px;
+}
+
+

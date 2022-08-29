@@ -1,0 +1,11 @@
+#result{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    margin: auto;
+    gap: 10px;
+}
+#result img{
+    margin-top: 50px;
+    width: 100%;
+}

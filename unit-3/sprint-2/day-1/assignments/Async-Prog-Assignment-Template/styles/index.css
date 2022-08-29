@@ -1,0 +1,58 @@
+
+
+#navbar {
+    display: flex;
+    justify-content: end;
+    border: 1px solid teal;
+    margin-bottom: 50px;
+}
+
+#navbar div {
+    padding: 7px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+#movies  {
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 50px;
+   
+   text-align: center;
+
+}
+
+
+#movies img {
+    width: auto;
+    height: 200px;
+    display: inline-block;
+    margin-left: 130px;
+}
+#Cont-1{
+    width: 100%;
+  
+}
+#sort-buttons{
+    margin-bottom: 20px;
+}
+#slideshow{
+    width: 80%;
+    margin: auto;
+    height: auto;
+    text-align: center;
+    
+}
+#button-style{
+    margin-bottom: 20px;
+}
+#container img{
+    
+    border: 2px solid teal;
+}

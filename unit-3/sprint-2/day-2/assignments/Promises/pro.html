@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        width: 50%;
+       position: absolute;
+       right: 25%;
+    }
+</style>
+<body>
+    <video src="https://cdnl.iconscout.com/lottie/premium/thumb/payment-success-5463788-4573683.mp4" id="v"></video>
+    <img id="i" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjG3dldeNrz85Q3r9001ndocvO3e41mJTFrZHmPo2FfZoZnIzJ5GKyabJOKLy8ZS_fvKiWrIkKt17NA86-8zaS0XXfEJeKxdf98GN6OORkiUYt_WGcgelGAXDbNhCDGG_EAUzR822s4x3wkVejoAPRdDB9ZAhmhxDuTl_Z9ZkTgdh-aWzTQXh3STxsNSw/s500/3.webp" alt="">
+</body>
+</html>
+<!-- https://media1.giphy.com/media/6VriQO3GFRwwBVPbi4/200.webp?cid=ecf05e47vrnblaraws92ezykyvw5drfhmuunnlf14d6o2gzh&rid=200.webp&ct=g -->
+<script>
+    let image=document.getElementById("i")
+    let video=document.getElementById("v")
+ function bank(){
+    return true;
+}
+
+let pay = new Promise(function(res,rej){
+    let pin=bank();
+setTimeout(function(){
+    if(pin){
+        res("Payment Done")
+    }
+    else{
+        rej("Try Again")
+    }
+},5000)
+   
+})
+
+async function content(){
+    try{
+    let res =await pay
+    image.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXW3I05Ks0zVvX19F8XY6ZD9D1A5GESv1x6Q&usqp=CAUs"
+    
+    console.log(res)
+    }catch(Err){
+        console.log("Error")
+        image.src="https://www.bhimappdownload.in/wp-content/uploads/2017/04/pnb-upi-error.jpg"
+    }
+}
+content()
+
+// 
+// pay.then(function(res){
+// console.log(res)
+// image.src="https://media1.giphy.com/media/6VriQO3GFRwwBVPbi4/200.webp?cid=ecf05e47vrnblaraws92ezykyvw5drfhmuunnlf14d6o2gzh&rid=200.webp&ct=g"
+// });
+// pay.catch(function(rej){
+//     console.log(rej)
+//     image.src="https://media1.giphy.com/media/A1SxC5HRrD3MY/100.webp?cid=ecf05e471jkxe31ucc0xuuvswx1p717gbk0av46oqtx2t9cf&rid=100.webp&ct=g"
+// })
+
+
+</script>

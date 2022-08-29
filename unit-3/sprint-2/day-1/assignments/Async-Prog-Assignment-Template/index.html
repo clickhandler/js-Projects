@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <div><a href="index.html">
+                <h2>Home</h2>
+            </a></div>
+        <div><a href="signup.html">
+                <h2>Signup</h2>
+            </a></div>
+        <div><a href="login.html">
+                <h2 id="login">Login</h2>
+            </a></div>
+    </div>
+
+    <div id="slideshow">
+        <!--Show Slideshow here-->
+        <h1>Welcom To Magic Slides</h1>
+        <div id="button-style"> <input type="Url" id="Url" placeholder="Enter Images Url">
+            <button onclick="storeimg()">Store-Images</button>
+            <button onclick="magicslide()">Start</button>
+            <button onclick="magicslidestop()">Pause</button>
+        </div>
+        <div id="container"></div>
+    </div>
+
+    <div id="sort-buttons">
+
+        <!--Add sorting here-->
+    </div>
+    <div id="movies">
+        <!--Show list of movies here-->
+    </div>
+</body>
+
+</html>
+<script>
+
+
+    function storeimg() {
+        let imageUrl = document.getElementById("Url").value;
+        let imagesData = JSON.parse(localStorage.getItem("images")) || []
+        imagesData.push(imageUrl)
+
+        localStorage.setItem("images", JSON.stringify(imagesData))
+        document.getElementById("Url").value = ""
+
+    }
+
+    let i = 0
+    let stop;
+    function magicslide() {
+
+        let imagesData = JSON.parse(localStorage.getItem("images")) || []
+
+        let container = document.getElementById("container");
+
+        stop = setInterval(function () {
+
+            if (i === imagesData.length) {
+                i = 0
+            }
+            container.innerHTML = null
+            let image = imagesData[i]
+            i++
+
+            let displayimg = document.createElement("img")
+            displayimg.src = image
+
+            container.append(displayimg)
+
+        }, 3000)
+    }
+
+
+    function magicslidestop() {
+        clearInterval(stop)
+    }
+
+</script>

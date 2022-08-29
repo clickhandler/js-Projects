@@ -1,0 +1,29 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+   background-color: rgb(236, 158, 14);
+   color: black;
+  }
+  #logo img{
+    width: 100px;
+  }
+  #inputSearch{
+    width: 50%;
+  }
+  #inputSearch input{
+    width: 70%;
+    height: 30px;
+    font-size: 19px;
+  }
+  a h3{
+    text-decoration: none;
+    color: black;
+    margin-right: 30px;
+  }
+  #btn{
+    height: 36px;
+    margin-right: 20px;
+  }

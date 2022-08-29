@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/signup.css">
+    
+</head>
+
+<body>
+    <div id="navbar">
+        <div><a href="index.html"><h2>Home</h2></a></div>
+        <div><a href="signup.html"><h2>Signup</h2></a></div>
+        <div><a href="login.html"><h2 id="login" >Login</h2></a></div>
+    </div>
+    <div id="signup-form-div">
+
+        <form id="UserInfo">
+            <h1>Signup</h1>
+
+            <div class="cinema"><input type="text" placeholder="Enter your Name" required id="name"></div>
+            <div class="cinema"><input type="number" placeholder="Enter your Contact" required id="phone"></div>
+            <div class="cinema"><input type="email" placeholder="Enter your Email" required id="mail"></div>
+            <div class="cinema"><input type="email" placeholder="Confirm Email" id="Confirm-mail" required></div>
+            <div class="cinema"><input type="password" placeholder="Enter your Password" required id="pass"></div>
+            <div class="cinema"><input type="password" placeholder="Confirm Paswword" id="Confirm-pass" required></div>
+            <div id="btn"><input type="submit"></div>
+        </form>
+
+    </div>
+</body>
+
+</html>
+ <script>
+    document.querySelector("#UserInfo").addEventListener("submit", signupFun);
+     var UserInformation=JSON.parse(localStorage.getItem("UserData"))||[]
+
+    function signupFun() {
+        event.preventDefault()
+
+        var name1 = document.getElementById("name")
+        var Phone1 = document.getElementById("phone")
+        var Email1 = document.getElementById("mail")
+        var Email2=document.getElementById("Confirm-mail")
+        var Pass1 = document.getElementById("pass")
+        var Pass2=document.getElementById("Confirm-pass")
+        // if(Email1.value!=Email2.value ||Pass1.value!=Pass2.value){
+        //     alert("Check your Email and Password")
+        // }
+        if(Email1.value!=Email2.value){
+            alert("Check your Email")
+        }
+        if(Pass1.value!=Pass2.value){
+            alert("Check Your Password")
+        }
+        else{
+            alert("Registration Successful")
+        }
+            let Userobj = {
+               userName:UserInfo.name.value,
+               UserEmail:UserInfo.mail.value,
+               usePass:UserInfo.pass.value
+
+            }
+           
+            UserInformation.push(Userobj)
+            localStorage.setItem("UserData",JSON.stringify(UserInformation));
+            window.location.href="login.html"
+        }
+
+    
+
+
+
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" name="Burger" id="Burger">
+    <label for="Burger">Burger</label>
+    <input type="checkbox" name="Coffee" id="Coffee">
+    <label for="Coffee">Coffee</label>
+    <input type="checkbox" name="Shakes" id="Shake">
+    <label for="shakes">Shakes</label>
+    <input type="checkbox" name="Fries" id="Fries">
+    <label for="Fries">Fries</label>
+    <input type="checkbox" name="Garlic" id="Garlic">
+    <label for="Garlic">Garlic Bread</label>
+
+    <button onclick="orderItem()">Order Food</button>
+
+</body>
+
+</html>
+<script>
+
+    let checkbox1 = document.querySelectorAll('input[type="checkbox"]:checked')
+    
+    
+    function checkAll() {
+        return true
+    }
+    function orderItem() {
+
+        let mypromise = new Promise(function (resolve, reject) {
+            let content = checkAll()
+            setInterval(function () {
+                if (content) {
+                    resolve("Content Loded")
+                }
+                else {
+                    reject("Fail to load")
+                }
+
+            }, 2000)
+
+        })
+
+        mypromise.then(function (checkbox1) {
+            checkbox1 = document.querySelectorAll('input[type="checkbox"]:checked')
+            
+            console.log("value:", checkbox1)
+        }).catch(function (err) {
+
+
+            console.log("err:", err)
+        })
+        console.log(mypromise)
+
+    
+   
+
+    function DisplayData(checkbox1){
+let p=document.createElement("p")
+
+p.innerHTML=checkbox1
+
+document.querySelector("body").append(p)
+    }
+
+    DisplayData(checkbox1)
+    }
+    
+</script>

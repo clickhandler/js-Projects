@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div><h1>Admin Panel</h1></div>
+    <a href="product.html">Product Page</a>
+    <form id="Admindata" >
+        <input type="text" id="name" placeholder="Enter Product Name">
+        <input type="text" id="category" placeholder="Enter Category">
+        <input type="text" id="image" placeholder="Enter Image URL">
+        <input type="number" id="price" placeholder="Enter Price">
+        <select name="" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        
+        <input type="submit" id="add">
+    </form>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+document.getElementById("add").addEventListener("click",Ecomstore)
+
+function Product(n,c,i,p,g){
+    this.name=n;
+    this.cat=c;
+    this.img=i;
+    this.rupees=p;
+    this.gen=g
+}
+
+function Ecomstore(){
+    document.getElementById("#Admindata")
+    event.preventDefault()
+    
+
+    let name=Admindata.name.value
+    let cat=Admindata.category.value;
+    let img=Admindata.image.value;
+    let rupees=Admindata.price.value
+    let gen=Admindata.gender.value;
+    
+
+
+let product= new Product(name,cat,img,rupees,gen)
+console.log(product)
+
+let productArr=JSON.parse(localStorage.getItem("Products"))||[]
+productArr.push(product);
+
+localStorage.setItem("Products",JSON.stringify(productArr))
+
+document.getElementById("name").value=""
+document.getElementById("category").value=""
+document.getElementById("image").value=""
+document.getElementById("price").value=""
+document.getElementById("gender").value=""
+
+}
+
+
+</script>

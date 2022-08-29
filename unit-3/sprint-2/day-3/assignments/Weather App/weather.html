@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<style>
+    .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: auto;
+        width: auto;
+    }
+</style>
+
+<body>
+    
+<img src="https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg?t=st=1654183911~exp=1654184511~hmac=1ac36b1f55c5efcd18178f9d9ad1fd417c0fe1111619459b2e90095fd8f3f366&w=740" alt="">
+    <div id="container">
+        <h3>Welcome To Masai Weather App</h3>
+        <input type="text" id="city">
+        <button onclick="getData()">See Weather</button>
+
+
+    <div class="mapouter">
+        <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+                src="https://maps.google.com/maps?q=Rewari&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                href="https://www.whatismyip-address.com"></a><br>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+
+</html>
+
+<script src="weather.js"></script>
+
+<!-- <script>
+
+    const api_key = "fc638301ecb85f77851709265fde57f3"
+    async function getData(lat,lon) {
+
+        let city = document.getElementById("city").value
+
+        // let url1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
+
+        let url=`https://api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=7&appid=fc638301ecb85f77851709265fde57f3`
+
+        let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
+
+
+        let res = await fetch(url);
+        let data = await res.json()
+        append(data)
+        console.log(data)
+
+        
+
+
+
+
+    }
+
+    function append(data) {
+        let container = document.getElementById("container")
+        // container.innerHTML = null;
+
+        let city = document.createElement("h3")
+        city.innerText = data.name;
+
+        let temper = document.createElement("p")
+        temper.innerText = "Current Temp- " + data.main.temp;
+
+        let max_temp = document.createElement("p")
+        max_temp.innerHTML = "Max Temp- " + data.main.temp_max
+
+        let min_temp = document.createElement("p")
+        min_temp.innerHTML = "Min Temp- " + data.main.temp_min
+
+        var iframe = document.getElementById("gmap_canvas")
+        iframe.src = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+        container.append(city, temper, max_temp, min_temp)
+    }
+
+
+    function getLocationWeather() {
+        navigator.geolocation.getCurrentPosition(success);
+        function success(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            console.log(latitude);
+            console.log(longitude);
+            getData(latitude,longitude)
+        }
+    }
+    getLocationWeather()
+
+</script> -->

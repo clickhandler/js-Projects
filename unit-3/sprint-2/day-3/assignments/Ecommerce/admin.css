@@ -1,0 +1,15 @@
+#Admindata{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+    margin: auto;
+}
+#gender{
+    margin-bottom: 15px;
+}
+#add{
+ 
+   width: 20%;
+   margin: auto;
+}

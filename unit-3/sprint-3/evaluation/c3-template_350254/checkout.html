@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    <h1>Final Checkout</h1>
+    <div>
+      <!-- Append the hotel detail inside div with id: "hotel_details" -->
+    </div>
+    <div id="checkout">
+      <div id="hotel_details"></div>
+      <!-- - The hotel details will be appended inside div with id:- "hotel_details".
+        
+  - The input fields will have ids:- "user_name", "user_number", "check_in" and "check_out"
+  - The book button will have id:- "book"   -->
+      <input type="texr" id="user_name" placeholder="Enter Name" />
+      <input type="number" id="user_number" placeholder="Enter NUmber" />
+      <input type="date" name="" id="check_in" />
+      <input type="date" name="" id="check_out" />
+      <button id="book" onclick="Booked()">Book</button>
+    </div>
+  </body>
+</html>
+<script>
+  let HotelData = JSON.parse(localStorage.getItem("Booked")) || [];
+  AppendData(HotelData);
+  console.log(HotelData);
+
+  function AppendData(HotelData) {
+    let container = document.getElementById("hotel_details");
+
+    HotelData.forEach(function (elem) {
+      let div = document.createElement("div");
+      div.setAttribute("id", "hotel");
+
+      let image = document.createElement("img");
+      image.src = elem.Images.one;
+      let title = document.createElement("h3");
+      title.innerText = elem.Title;
+
+      let price = document.createElement("h5");
+      price.innerText = `Price Per Room ${elem.Price}`;
+
+      let rate = document.createElement("h5");
+      rate.innerText = `Ratings ${elem.Rating}`;
+
+      let ac = document.createElement("h4");
+      ac.innerText = `Ac ${elem.Ac}`;
+
+      div.append(image, title, price, rate, ac);
+
+      container.append(div);
+    });
+  }
+
+  function Booked() {
+    setInterval(function () {
+      let name = document.getElementById("user_name").value;
+      alert(`${name} Your booking is successful!`);
+    }, 5000);
+  }
+</script>

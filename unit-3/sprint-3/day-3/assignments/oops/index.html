@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMS</title>
+</head>
+
+<body>
+<h1>Student Management System</h1>
+
+<h3>Enter student details</h3>
+<input type="text" id="name" placeholder="Enter Name">
+<input type="text" id="id" placeholder="Enter Id">
+<button onclick="addstud()">Add student</button>
+<button onclick="Removebalak()"> Remove</button>
+</body>
+
+</html>
+<script>
+    // OOPS--------Object Oriented Programming
+    // Secure Password System
+    let studentArr = []
+
+
+   class User {   //user Information Blueprint
+        constructor(n, id) {
+            this.name = n;
+            this.id = id;
+        }
+
+        signup(username, password) {  //signup for user
+            let isValidated = false;
+            //   validate username and Password
+
+            isValidated =
+                this.#validateusername(username) && this.#validatepassword(password) //Encapsulation to make user password private(#)
+
+            if (isValidated) {
+                this.username = username
+                this.password = password
+
+                console.log("Sign up Successfull")
+
+                studentArr.push(this) //storing student Data
+            }
+            else {
+                console.log("Please Enter Correct Credentials")
+            }
+        }
+
+        #validateusername(username) {
+            return true;
+        }
+
+        #validatepassword(password) {
+            return true;
+        }
+
+        login(username, password) { //login using signup credentials
+            if (username === this.username && password === this.password) {
+                console.log("Login Successfull")
+            }
+            else {
+                console.log("Authentication Failed")
+            }
+        }
+
+
+    }
+
+
+    //   create student using user blueprint
+
+    class Student extends User {
+
+        // borrow properties from user
+        constructor(n, id) {
+            super(n, id)
+
+            this.noOfAssignment = 0;
+            
+
+        }
+        submitAss() {
+            this.noOfAssignment++
+        }
+
+    }
+
+    class Admin extends User {  //Admin using user but having special power over student
+        constructor(n, id) {
+            super(n, id)
+        }
+
+        removeStud(id) {
+        // Remove object from Array
+
+            studentArr = studentArr.filter((elem) => {
+                return elem.id !== id
+            })
+        }
+    }
+
+    function addstud(n,id){
+        let balak =  new Student(document.getElementById("name").value,document.getElementById("id").value)
+         studentArr.push(balak)
+         console.log(studentArr)
+         
+        
+    }
+
+    
+
+
+</script>

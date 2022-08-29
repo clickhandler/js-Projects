@@ -1,0 +1,26 @@
+#navbar{
+    display: flex;
+    justify-content: end;
+}
+#navbar div{
+    margin: 20px;
+}
+
+#menu{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    margin: auto;
+    gap: 10px;
+    text-align: center;
+    
+}
+
+#Container{
+    border: 2px solid gray;
+}
+img{
+   margin-top: 5px;
+    width: 90%;
+    height: 250px;
+}

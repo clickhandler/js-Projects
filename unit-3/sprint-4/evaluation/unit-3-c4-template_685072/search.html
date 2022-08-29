@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search results</title>
+  </head>
+  <style>
+    #navbar {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      background-color: antiquewhite;
+    }
+    #navbar a {
+      margin: 20px;
+    }
+    #navbar input {
+      width: 80%;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+    #results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      margin: auto;
+      gap: 10px;
+      
+    }
+    #results img {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <!-- Same navbar with same functionality  -->
+    <div id="navbar"></div>
+    <!-- Append results inside div with id "results"  -->
+    <div id="results"></div>
+    <!-- News divs will have class "news"  -->
+  </body>
+</html>
+<script type="module">
+  import navbar from "/components/navbar.js";
+  let container = document.getElementById("navbar");
+  container.innerHTML = navbar();
+</script>
+
+<script>
+  let data = JSON.parse(localStorage.getItem("searchData")) || [];
+  Appnednews(data.articles);
+  function Appnednews(data) {
+    let container = document.getElementById("results");
+    container.innerHTML = null;
+    data.forEach((elem) => {
+      let div = document.createElement("div");
+      div.setAttribute("class", "news");
+      let image = document.createElement("img");
+      image.src = elem.urlToImage;
+      let title = document.createElement("h3");
+      title.innerText = elem.title;
+      let content1 = document.createElement("p");
+      content1.innerText = elem.content;
+      div.append(image, title,content1);
+
+      container.append(div);
+
+      div.addEventListener("click", function () {
+        newsData(elem);
+      });
+    });
+  }
+
+  async function search() {
+    let query = document.getElementById("search_input").value;
+
+    let response = await fetch(
+      `https://masai-api.herokuapp.com/news?q=${query}`
+    );
+
+    let data = await response.json();
+
+    Appnednews(data.articles);
+  }
+
+  function newsData(elem) {
+    let news = [];
+    news.push(elem);
+    localStorage.setItem("Headlines", JSON.stringify(news));
+    window.location.href = "news.html";
+  }
+</script>

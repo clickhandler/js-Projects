@@ -1,0 +1,17 @@
+body img{
+    position: relative;
+    width: 100%;
+
+    object-fit: contain;
+    
+}
+#container{
+    position: absolute;
+    text-align: center;
+   
+    left: 25%;
+    top: 5%;
+}
+#city{
+    margin-bottom: 30px;
+}
